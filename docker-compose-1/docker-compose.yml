@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=npg_OCNQqDe9gR6Y
+
+  app:
+    build:
+      network: host
+      context: ./
+      dockerfile: Dockerfile
+
+    environment:
+      - DATABASE_URL=postgresql://neondb_owner:npg_OCNQqDe9gR6Y@ep-misty-star-ao2p2wpb-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+    ports:
+      - 3000:3000
+
+    depends_on:
+      - postgres

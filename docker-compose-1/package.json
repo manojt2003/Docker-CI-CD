@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "bun run src/index.ts",
-    "dev": "bun run --hot src/index.ts"
+    "dev:docker": "bunx prisma migrate dev && bun run --hot src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",

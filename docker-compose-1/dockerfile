@@ -8,10 +8,10 @@ RUN bun install
 
 COPY . .
 
-RUN bunx prisma migrate
+# RUN bunx prisma migrate dev --name initial-schema
 RUN bunx prisma generate 
 
 EXPOSE 3000
 
 # Run the app
-CMD ["bun", "run", "src/index.ts"]
+CMD bunx prisma migrate deploy && bun run src/index.ts
