@@ -1,0 +1,36 @@
+{
+  "name": "mono-repo-deploy-aws",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+
+    "db:generate": "cd packages/db && bunx prisma generate && cd ../..",
+    "start:web": "cd apps/web && bun run start",
+    "start:backend": "cd apps/backend && bun run start",
+    "start:ws": "cd apps/ws && bun run start"
+
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "turbo": "^2.9.14",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.2.22",
+  "workspaces": [ "apps/*", "packages/*" ],
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "@types/express": "^5.0.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0"
+  }
+}

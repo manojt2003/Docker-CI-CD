@@ -25,7 +25,7 @@ app.post("/", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-    let lUser = prisma.user.findMany()
+    let lUser = prisma.user.findMany([])
     
     res.json({lUser})
 })
