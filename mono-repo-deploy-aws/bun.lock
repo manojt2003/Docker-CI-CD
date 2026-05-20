@@ -21,6 +21,7 @@
     "apps/backend": {
       "name": "backend",
       "devDependencies": {
+        "@repo/db": "*",
         "@types/bun": "latest",
       },
       "peerDependencies": {
