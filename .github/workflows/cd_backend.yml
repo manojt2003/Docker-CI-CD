@@ -1,0 +1,32 @@
+name : Contiune Delpoyment
+on:
+  push:
+    branches: [ main ]
+    path: 
+      - 'mono-repo-deploy-aws/**'
+
+jobs:
+  build:
+    runs_on:  ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./mono-repo-deploy-aws
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Docker login
+        uses: docker/login-action@v2
+        with:
+          username: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        wiht:
+          context: .
+          file: ./docker/dockerfile.backend
+          push: true
+          tags: manojt2003/Docker-CI-CD/tree/main/mono-repo-deploy-aws: ${{ github.sha }} 
