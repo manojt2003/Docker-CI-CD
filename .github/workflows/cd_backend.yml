@@ -25,7 +25,7 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v4
-        wiht:
+        with:
           context: .
           file: ./docker/dockerfile.backend
           push: true
