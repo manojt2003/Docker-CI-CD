@@ -29,4 +29,4 @@ jobs:
           context: .
           file: ./docker/dockerfile.backend
           push: true
-          tags: manojt2003/Docker-CI-CD/tree/main/mono-repo-deploy-aws: ${{ github.sha }} 
+          tags: manojt2003/mono-repo-deploy-aws:${{ github.sha }}
